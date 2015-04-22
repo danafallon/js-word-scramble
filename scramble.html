@@ -22,7 +22,7 @@
             var scrambledWord = SCRAMBLED[index];
 
             // prompt the user to guess the original word when given the scrambled word
-            var guess = prompt("The scrambled word is ".concat(scrambledWord, ". Guess the unscrambled word:"));
+            var guess = prompt("The scrambled word is ".concat(scrambledWord, ". Guess the unscrambled word:")).toLowerCase().trim();
             // If the user guesses wrong, tell them they were wrong and the right word.
             var correct = false;
             while (correct === false) {
@@ -31,7 +31,7 @@
                     correct = true;
                 }
                 else {
-                    guess = prompt("Try again. The scrambled word is: ".concat(scrambledWord));
+                    guess = prompt("Try again. The scrambled word is: ".concat(scrambledWord)).toLowerCase().trim();
                 }
             };
             // If the user guesses the correct word, congratulate them.
