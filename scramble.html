@@ -7,8 +7,21 @@
     <h1>A Javascript Word Scramble Game</h1>
 
     <script>
+        function scramble(word) {
+            var chars = word.split("");
+            var n = chars.length;
+
+            for (var i = n - 1; i > 0; i--) {
+                var j = parseInt(Math.random() * (i + 1));
+                var tmp = chars[i];
+                chars[i] = chars[j];
+                chars[j] = tmp;
+            }
+            return chars.join("");
+        }
+
         var WORDS     = ["booger", "apple", "hackbright", "mango", "computer", "balloonicorn", "aardvark"];
-        var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman", "uretpomc", "nlaocibnloor", "darvkara"];
+        // var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman", "uretpomc", "nlaocibnloor", "darvkara"];
 
         var playing = true;
 
@@ -19,7 +32,7 @@
             var randomWord = WORDS[index];
 
             // Grab the corresponding scrambled word from the SCRAMBLED array
-            var scrambledWord = SCRAMBLED[index];
+            var scrambledWord = scramble(randomWord)
 
             // prompt the user to guess the original word when given the scrambled word
             var guess = prompt("The scrambled word is ".concat(scrambledWord, ". Guess the unscrambled word:")).toLowerCase().trim();
